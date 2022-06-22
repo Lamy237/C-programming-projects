@@ -1,6 +1,11 @@
 ## Objective
 The goal of the game is to guess a secret number generated or set between a well defined interval.
 
+## Prerequisites
+- Variable declaration
+- Conditionnal statements
+- Loops and iterations
+
 ## Structure
 The game has two (02) playing modes:
 - `Mode 1` : In which the secret number is automatically generated and is played by a single individual.
