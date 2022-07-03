@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "functions.h"
-#include "dico.h"
+#include "dico.h" // preprocessor MAX defined here
+#include "inputs.h"
 
 
 int main(int argc, char *argv[])
@@ -12,19 +14,18 @@ int main(int argc, char *argv[])
     int *found = NULL, sizeWord = 0;
     long decision = 0, gameMode = 0;
 
-    puts("\n=== WELCOME TO THE HANGMAN GAME !!! ===\n");
+    puts("\n=== WELCOME TO THE HANGMAN GAME !!! ===");
 
     // Prompt the user for the game mode
     do
     {
-        puts("1. MODE 1 (1 Player)");
+        puts("\n1. MODE 1 (1 Player)");
         puts("2. MODE 2 (2 Players)\n");
-
         fputs("Enter your choice : ", stdout);
         gameMode = read_long();
 
         if(gameMode != 1 && gameMode != 2)
-            puts("\nChoice not registered, please enter a valid option");
+            puts("Choice not registered, please enter a valid option\n");
     }while(gameMode != 1 && gameMode != 2);
 
 
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
         else // MODE 2 : The first player enters the secret word
         {
             fputs("\nEnter the secret word: ", stdout);
-            read_string(secretWord);
+            read_string(secretWord, MAX);
             strupr(secretWord);
         }
 
@@ -71,6 +72,7 @@ int main(int argc, char *argv[])
 
             fputs("\nEnter a letter: ", stdout);
             letter = read_char();
+            letter = toupper(letter);
 
             if(!search_in_word(letter, secretWord, found))
                 chances--;
@@ -84,22 +86,21 @@ int main(int argc, char *argv[])
         else
             printf("\nGAME OVER ! The secret word was : %s\n", secretWord);
 
+
+        free(found); // Remember to free the allocated memory
+
         // Prompt the user to decide whether to continue or not
         do
         {
             puts("\nDo you want to play again ?");
             puts("1. Yes");
             puts("2. No\n");
-
             fputs("Enter your choice : ", stdout);
             decision = read_long();
 
             if(decision != 1 && decision != 2)
-                puts("\nChoice not registered, kindly read the instructions and try again");
+                puts("Choice not registered, kindly read the instructions and try again\n");
         }while(decision != 1 && decision != 2);
-
-
-        free(found); // Remember to free the allocated memory
 
         if(decision == 1)
         {
@@ -107,8 +108,10 @@ int main(int argc, char *argv[])
             puts("              NEW GAME !              ");
             puts("--------------------------------------");
         }
+
     }while(decision == 1);
 
 
     return EXIT_SUCCESS;
 }
+
