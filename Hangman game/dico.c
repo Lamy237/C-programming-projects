@@ -6,7 +6,7 @@ By Lamy237, for the HANGMAN game (OpenClassrooms)
 
 Role: Definition of functions used to randomly choose a word from the dictionary
 
-Last Update: June 12, 2022
+Last Update: July 4, 2022
 */
 
 #include <stdio.h>
