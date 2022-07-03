@@ -13,7 +13,7 @@ Role: Definition of the functions managing the game
 
 Creation: June 30, 2021 at 15:29 (Indian Time)
 
-Last Update: June 12, 2022
+Last Update: July 4, 2022
 */
 
 #include <stdio.h>
