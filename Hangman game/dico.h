@@ -15,7 +15,7 @@ Last Update: June 12, 2022
 
     #define MAX 100
 
-    int choose_word(char chosen_word[]);
+    int choose_word(char chosenWord[]);
     int random(int maximum);
 
 #endif // DICO_H_INCLUDED
