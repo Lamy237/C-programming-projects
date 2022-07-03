@@ -30,10 +30,12 @@ The dictionary of words is a file that contains several words from which one wil
 To add a word to the dictionary, the following rules must be respected :
 - The file should contain a single word on each line. 
 - All the words in the dictionary must be capitalized (written in capital letters).
+- There must be one (1) empty line at the end of the file.
 
 ```
 MORNING
 XYLOPHONE
 CHAMPIONSHIP
+
 ```
 
