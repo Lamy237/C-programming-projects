@@ -22,7 +22,7 @@ int choose_word(char chosenWord[])
     FILE *dict = NULL;
 
     int numberOfWords = 0, chosenWordNumber = 0;
-    char current_char = 0;
+    char currentChar = 0;
 
     dict = fopen("dico.txt", "r");
 
@@ -35,12 +35,12 @@ int choose_word(char chosenWord[])
     // Counting the number of words in the dictionary
     do
     {
-        current_char = fgetc(dict);
+        currentChar = fgetc(dict);
 
-        if(current_char == '\n')
+        if(currentChar == '\n')
             numberOfWords++;
 
-    }while(current_char != EOF);
+    }while(currentChar != EOF);
 
     // Randomly picking a word in the dictionary
     chosenWordNumber = random(numberOfWords);
@@ -51,9 +51,9 @@ int choose_word(char chosenWord[])
     // Placing the cursor in front of the chosen word to read it
     while(chosenWordNumber > 0)
     {
-        current_char = fgetc(dict);
+        currentChar = fgetc(dict);
 
-        if(current_char == '\n')
+        if(currentChar == '\n')
             chosenWordNumber--;
     }
 
