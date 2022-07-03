@@ -19,33 +19,33 @@ int main(int argc, char *argv[])
     const int MIN = 1;
     int continueGame = 0, gameMode = 0, level = 0, max = 0;
 
-    printf("\n===WELCOME TO THE NUMBER GUESSING GAME !!!===\n");
+    puts("\n=== WELCOME TO THE NUMBER GUESSING GAME !!! ===");
 
     // Prompt the user for the game mode
     do
     {
-        printf("1. MODE 1 (1 Player)\n");
-        printf("2. MODE 2 (2 Players)\n\n");
-        printf("Enter your choice : ");
+        puts("\n1. MODE 1 (1 Player)");
+        puts("2. MODE 2 (2 Players)\n");
+        fputs("Enter your choice : ", stdout);
         scanf("%d", &gameMode);
 
         if(gameMode != 1 && gameMode != 2)
-            printf("\nChoice not registered, please enter a valid option.\n");
+            puts("Choice not registered, please enter a valid option.\n");
     }while(gameMode != 1 && gameMode != 2);
 
 
     // Prompt the user for the level of difficulty
     do
     {
-        printf("\nSelect a level\n");
-        printf("1. Level 1 (1 - 100)\n");
-        printf("2. Level 2 (1 - 1000)\n");
-        printf("3. Level 3 (1 - 10000)\n\n");
-        printf("Enter your choice : ");
+        puts("\nSelect a level");
+        puts("1. Level 1 (1 - 100)");
+        puts("2. Level 2 (1 - 1000)");
+        puts("3. Level 3 (1 - 10000)\n");
+        fputs("Enter your choice : ", stdout);
         scanf("%d", &level);
 
         if(level < 1 || level > 3)
-            printf("\nChoice not registered, please enter a valid option.\n");
+            puts("Choice not registered, please enter a valid option.\n");
     }while(level < 1 || level > 3);
 
     // Set the value of max
@@ -69,36 +69,42 @@ int main(int argc, char *argv[])
                 scanf("%d", &secretNumber);
 
                 if(secretNumber < MIN || secretNumber > max)
-                    printf("\nThe entered number is out of the required interval, please try again.\n");
+                    puts("The entered number is out of the required interval, please try again.\n");
             }while(secretNumber < MIN || secretNumber > max);
         }
 
-        // The actual game
+        // The actual game : Guess the secret number
         do
         {
-            printf("\nWhat is the secret number ? ");
+            fputs("\nWhat is the secret number ? ", stdout);
             scanf("%d", &number);
             count++;
 
             if(number < secretNumber)
-                printf("The secret number is greater.\n\n");
+                puts("The secret number is greater.\n");
             else if(number > secretNumber)
-                printf("The secret number is smaller.\n\n");
+                puts("The secret number is smaller.\n");
             else
-                printf("Congratulations, you found the secret number after %d chance(s) !!!\n\n", count);
+                printf("\nCongratulations, you found the secret number after %d chance(s) !!!\n\n", count);
         }while(number != secretNumber);
 
 
         do
         {
-            printf("Select an option\n");
-            printf("1. New Game\n2. Quit\n\n");
-            printf("Enter your choice : ");
+            puts("\nSelect an option");
+            puts("1. New Game\n2. Quit\n");
+            fputs("Enter your choice : ", stdout);
             scanf("%d", &continueGame);
-            printf("\n");
+
+            if(continueGame == 1)
+            {
+                puts("\n--------------------------------------");
+                puts("              NEW GAME !              ");
+                puts("--------------------------------------");
+            }
 
             if(continueGame != 1 && continueGame != 2)
-                printf("Choice not registered, please enter a valid option.\n");
+                puts("Choice not registered, please enter a valid option.\n");
         }while(continueGame != 1 && continueGame != 2);
 
     }while(continueGame == 1);
